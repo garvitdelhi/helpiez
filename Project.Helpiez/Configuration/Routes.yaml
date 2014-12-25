@@ -1,0 +1,54 @@
+#                                                                        #
+# Default subroutes configuration for the Project.Helpiez package             #
+#                                                                        #
+
+##
+# Authentication
+
+-
+  name:  'Authentication'
+  uriPattern: 'auth/<AuthenticationSubRoutes>'
+  defaults:
+    '@package':    'Project.Helpiez'
+    '@controller': 'Auth'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'AuthenticationSubRoutes':
+      package: 'Project.Helpiez'
+      suffix:  'Authentication'
+
+
+##
+# Frontend Post
+
+-
+  name:  'Frontend'
+  uriPattern: 'post/<FrontendSubRoutes>'
+  defaults:
+    '@package':    'Project.Helpiez'
+    '@controller': 'Frontend\Post'
+    '@action':     'show'
+    '@format':     'html'
+  subRoutes:
+    'FrontendSubRoutes':
+      package: 'Project.Helpiez'
+      suffix:  'PostFrontend'
+  httpMethods: ['POST']
+
+
+##
+# Frontend Get
+
+-
+  name:  'Frontend'
+  uriPattern: '<FrontendSubRoutes>'
+  defaults:
+    '@package':    'Project.Helpiez'
+    '@controller': 'Frontend\Get'
+    '@action':     'home'
+    '@format':     'html'
+  subRoutes:
+    'FrontendSubRoutes':
+      package: 'Project.Helpiez'
+      suffix:  'GetFrontend'

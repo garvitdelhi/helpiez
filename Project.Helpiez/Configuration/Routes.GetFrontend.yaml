@@ -1,0 +1,7 @@
+-
+  name: 'Homepage'
+  uriPattern: ''
+
+-
+  name: 'action redirect'
+  uriPattern: '({@action})'
