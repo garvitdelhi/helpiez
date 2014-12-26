@@ -3,12 +3,12 @@
 #                                                                        #
 
 -
-  name: 'Login form'
-  uriPattern: 'login(.{@format})'
+  name: 'Regist email'
+  uriPattern: 'register(.{@format})'
   defaults:
     '@format': 'html'
-  httpMethods: ['GET']
-  appendExceedingArguments: TRUE
+    '@action': 'registerEmail'
+  httpMethods: ['POST']
 
 -
   name: 'Authenticate'
@@ -24,4 +24,4 @@
   defaults:
     '@action': 'logout'
     '@format': 'html'
-  httpMethods: ['POST']
+  httpMethods: ['GET']

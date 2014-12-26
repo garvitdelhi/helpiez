@@ -18,12 +18,43 @@
       package: 'Project.Helpiez'
       suffix:  'Authentication'
 
+##
+# Backend Post
+
+-
+  name:  'Backend Post'
+  uriPattern: 'backend/post/<BackendSubRoutes>'
+  defaults:
+    '@package':    'Project.Helpiez'
+    '@controller': 'Backend\post'
+    '@action':     'home'
+    '@format':     'html'
+  subRoutes:
+    'BackendSubRoutes':
+      package: 'Project.Helpiez'
+      suffix:  'PostBackend'
+
+##
+# Backend Get
+
+-
+  name:  'Backend Get'
+  uriPattern: 'backend/<BackendSubRoutes>'
+  defaults:
+    '@package':    'Project.Helpiez'
+    '@controller': 'Backend\Get'
+    '@action':     'home'
+    '@format':     'html'
+  subRoutes:
+    'BackendSubRoutes':
+      package: 'Project.Helpiez'
+      suffix:  'GetBackend'
 
 ##
 # Frontend Post
 
 -
-  name:  'Frontend'
+  name:  'Frontend Post'
   uriPattern: 'post/<FrontendSubRoutes>'
   defaults:
     '@package':    'Project.Helpiez'
@@ -36,12 +67,11 @@
       suffix:  'PostFrontend'
   httpMethods: ['POST']
 
-
 ##
 # Frontend Get
 
 -
-  name:  'Frontend'
+  name:  'Frontend Get'
   uriPattern: '<FrontendSubRoutes>'
   defaults:
     '@package':    'Project.Helpiez'

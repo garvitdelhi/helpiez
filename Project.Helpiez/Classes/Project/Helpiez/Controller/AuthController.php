@@ -13,11 +13,44 @@ use TYPO3\Flow\Mvc\ActionRequest;
 
 class AuthController extends AbstractAuthenticationController {
 
-	/**
-	 * @return void
-	 */
-	public function indexAction() {
-	}
+    /**
+     * @var \TYPO3\Flow\Security\AccountFactory
+     * @Flow\Inject
+     */
+    protected $accountFactory;
+
+    /**
+     * @var \TYPO3\Flow\Security\AccountRepository
+     * @Flow\Inject
+     */
+    protected $accountRepository;
+
+    /**
+     * @var \Project\Helpiez\Domain\Repository\UserAccountRepository
+     * @Flow\Inject
+     */
+    protected $userAccountRepository;
+
+    /**
+     * @param \Project\Helpiez\Domain\Model\UserAccount $userAccount
+     * @return string
+     */
+    public function registerEmailAction($userAccount = NULL) {
+        if ($userAccount == NULL) {
+            $this->addFlashMessage('Please fill the form', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+            $this->redirect('login', 'Frontend\Get');
+        }
+        $defaultRole = array('Project.Helpiez:User');
+        if(!$userAccount->validate($this->userAccountRepository, $this)) {
+            $this->redirect('login', 'Frontend\Get');
+        }
+        $account = $this->accountFactory->createAccountWithPassword($userAccount->getUsername(), $userAccount->getPassword(), $defaultRole);
+        $this->accountRepository->add($account);
+        $userAccount->setPassword('');
+        $this->userAccountRepository->add($userAccount);
+        $this->addFlashMessage('Account Registered Please Login', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+        $this->redirect('login', 'Frontend\Get');
+    }
 
 	/**
 	 * Is called if authentication failed.
@@ -26,7 +59,9 @@ class AuthController extends AbstractAuthenticationController {
 	 * @return void
 	 */
 	protected function onAuthenticationFailure(AuthenticationRequiredException $exception = NULL) {
-		// $this->addFlashMessage('The entered username or password was wrong', 'Wrong credentials', Message::SEVERITY_ERROR, array(), ($exception === NULL ? 1347016771 : $exception->getCode()));
+		$this->addFlashMessage('The entered username or password was wrong.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+        $this->redirect('login', 'Frontend\Get');
+
 	}
 
 	/**
@@ -36,19 +71,7 @@ class AuthController extends AbstractAuthenticationController {
 	 * @return void
 	 */
 	public function onAuthenticationSuccess(ActionRequest $originalRequest = NULL) {
-		// if ($this->view instanceof JsonView) {
-		// 	$this->view->assign('value', array('success' => $this->authenticationManager->isAuthenticated(), 'csrfToken' => $this->securityContext->getCsrfProtectionToken()));
-		// } else {
-		// 	if ($this->request->hasArgument('lastVisitedNode') && strlen($this->request->getArgument('lastVisitedNode')) > 0) {
-		// 		$this->session->putData('lastVisitedNode', $this->request->getArgument('lastVisitedNode'));
-		// 	}
-		// 	if ($originalRequest !== NULL) {
-		// 		// Redirect to the location that redirected to the login form because the user was nog logged in
-		// 		$this->redirectToRequest($originalRequest);
-		// 	}
-
-		// 	$this->redirect('index', 'Backend\Backend');
-		// }
+        $this->redirect('home', 'Frontend\Get');
 	}
 
 	/**
@@ -59,6 +82,7 @@ class AuthController extends AbstractAuthenticationController {
 	public function logoutAction() {
 		// $possibleRedirectionUri = $this->backendRedirectionService->getAfterLogoutRedirectionUri($this->request);
 		parent::logoutAction();
+        $this->redirect('home', 'Frontend\Get');
 	}
 
 }

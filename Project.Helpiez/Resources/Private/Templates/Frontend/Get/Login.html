@@ -1,0 +1,112 @@
+<html>
+<f:layout name="Default" />
+<f:section name="Content">
+
+    <div class="top-image">
+        <img src="{f:uri.resource(path:'Frontend/images/single-page-top3.jpg')}" alt="" />
+    </div><!-- Page Top Image -->
+
+    <section class="page">
+        <div class="container">
+            <div class="page-title">
+                <h1>Contact <span>Us</span></h1>
+            </div><!-- Page Title -->
+            <f:flashMessages severity="Error" as="flashMessages">
+                <div class="alert-box attention">
+                    <i class="icon-exclamation-sign"></i>
+                    <h4>Attention! <span><br><br>
+                    <f:for each="{flashMessages}" as="flashMessage">
+                        {flashMessage}<br>
+                    </f:for>
+                </span></h4>
+                </div>
+            </f:flashMessages>
+            <f:flashMessages severity="OK" as="flashMessages">
+                <div class="alert-box done">
+                    <i class="icon-ok"></i>
+                    <h4>Congrats! <span>
+                    <f:for each="{flashMessages}" as="flashMessage">
+                        {flashMessage}
+                    </f:for>
+                </span></h4>
+                </div>
+            </f:flashMessages>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info form">
+                        <h3 class="sub-head">Login</h3>
+                        <f:form action="authenticate" controller="auth" package="project.helpiez" method="post">
+                            <f:flashMessages severity="Ok"/>
+                            <label accesskey="U">Username <span>*</span></label>
+                            <f:form.textfield class="form-control input-field" placeholder="Username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]"></f:form.textfield>
+                            <label accesskey="U">Password <span>*</span></label>
+                            <f:form.password class="form-control input-field" placeholder="Password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]"></f:form.password>
+                            <f:form.submit value="Submit" class="form-button submit"/>
+                        </f:form>
+                    </div>
+                </div>	<!-- Contact Info -->
+                <div class="col-md-6 pull-right">
+                    <div class="form">
+                        <h3 class="sub-head">Register Now</h3>
+                        For Organisation <f:link.action action="home" controller="Backend\Get">click here</f:link.action>
+                        <f:form action="registerEmail" objectName="userAccount" controller="auth" package="project.helpiez" method="post">
+                            <label accesskey="U">Full name <span>*</span></label>
+                            <f:form.textfield property="name" placeholder="Name" name="name" class="form-control input-field"/>
+                            <label accesskey="U">Username <span>*</span></label>
+                            <f:form.textfield property="username" placeholder="username" name="username" class="form-control input-field"/>
+                            <label accesskey="U">Email <span>*</span></label>
+                            <f:form.textfield property="email" placeholder="Email" name="email" class="form-control input-field"/>
+                            <label accesskey="U">Password <span>*</span></label>
+                            <f:form.password property="password" placeholder="Password" class="form-control input-field" />
+                            <f:form.submit value="Submit" class="form-button submit"/>
+                        </f:form>
+                    </div>
+                </div>	<!-- Message Form -->
+            </div>
+        </div>
+
+        <div class="social-connect">
+            <div class="container">
+                <h3>FIND US ON SOCIAL MEDIA.</h3>
+                <ul class="social-bar">
+                    <li><a title="" href="#"><img alt="" src="{f:uri.resource(path:'Frontend/images/rss.jpg')}"></a></li>
+                    <li><a title="" href="#"><img alt="" src="{f:uri.resource(path:'Frontend/images/facebook.jpg')}"></a></li>
+                    <li><a title="" href="#"><img alt="" src="{f:uri.resource(path:'Frontend/images/gplus.jpg')}"></a></li>
+                    <li><a title="" href="#"><img alt="" src="{f:uri.resource(path:'Frontend/images/linked-in.jpg')}"></a></li>
+                    <li><a title="" href="#"><img alt="" src="{f:uri.resource(path:'Frontend/images/pinterest.jpg')}"></a></li>
+                </ul>
+            </div>
+        </div><!-- Social Media Bar -->
+    </section>
+    <script>
+        $(window).load(function(){
+            $('.countries').flexslider({
+                animation: "slide",
+                animationLoop: false,
+                slideShow:false,
+                controlNav: false,
+                pausePlay: false,
+                mousewheel:true,
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+
+            $('.footer_carousel').flexslider({
+                animation: "slide",
+                animationLoop: false,
+                slideShow:false,
+                controlNav: true,
+                maxItems: 1,
+                pausePlay: false,
+                mousewheel:true,
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+
+
+        });
+    </script>
+</f:section>
+</html>
