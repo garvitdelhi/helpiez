@@ -8298,4 +8298,12 @@ blockquote span,
     box-shadow:1px 1px 2px #B3B3B3 inset;
 }
 
+.filters>li{
+    
+    margin-left: auto;
+    
+    padding-left:15px;
+}
+
+
 
