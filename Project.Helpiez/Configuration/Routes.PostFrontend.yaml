@@ -1,0 +1,3 @@
+-
+  name: 'organisation url'
+  uriPattern: 'ngo/{@action}/{organisationName}/({rate})'

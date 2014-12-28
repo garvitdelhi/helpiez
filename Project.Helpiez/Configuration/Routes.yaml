@@ -17,6 +17,7 @@
     'AuthenticationSubRoutes':
       package: 'Project.Helpiez'
       suffix:  'Authentication'
+  httpMethods: ['POST']
 
 ##
 # Backend Post
@@ -33,6 +34,7 @@
     'BackendSubRoutes':
       package: 'Project.Helpiez'
       suffix:  'PostBackend'
+  httpMethods: ['POST']
 
 ##
 # Backend Get
@@ -49,6 +51,7 @@
     'BackendSubRoutes':
       package: 'Project.Helpiez'
       suffix:  'GetBackend'
+  httpMethods: ['GET']
 
 ##
 # Frontend Post
@@ -82,3 +85,4 @@
     'FrontendSubRoutes':
       package: 'Project.Helpiez'
       suffix:  'GetFrontend'
+  httpMethods: ['GET']

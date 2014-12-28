@@ -9,6 +9,7 @@
 namespace Project\Helpiez\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class UserAccount
@@ -32,6 +33,12 @@ class UserAccount {
 
     /**
      * @var string
+     * @ORM\Column(type="bigint", length=10, nullable=true)
+     */
+    protected $number = null;
+
+    /**
+     * @var string
      */
     protected $password;
 
@@ -44,13 +51,21 @@ class UserAccount {
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $gender;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $profilePic;
+
+	/**
+	 * @var bool
+	 * @ORM\Column(type="boolean")
+	 */
+	protected $status = false;
 
     /**
      * @return string
@@ -65,6 +80,36 @@ class UserAccount {
      */
     public function setName($name) {
         $this->name = $name;
+    }
+
+	/**
+	 * @return boolean
+	 */
+	public function getStatus() {
+		return $this->status;
+	}
+
+	/**
+	 * @param boolean $status
+	 * @return void
+	 */
+	public function setStatus($status) {
+		$this->status = $status;
+	}
+
+    /**
+     * @return int
+     */
+    public function getNumber() {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
+     * @return void
+     */
+    public function setNumber($number) {
+        $this->number = $number;
     }
 
     /**
@@ -164,6 +209,12 @@ class UserAccount {
             $query->equals('email', $this->getEmail())
         );
         $result = $query->execute();
+		if($this->getNumber() != null) {
+			if (!is_numeric($this->getNumber())) {
+				$controller->addFlashMessage('Please enter a valid Phone Number', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+				$error = FALSE;
+			}
+		}
         if($result->count() == 1) {
             $controller->addFlashMessage('Email Exists', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
             $error = FALSE;
@@ -175,4 +226,4 @@ class UserAccount {
         return $error;
     }
 
-} 
+}

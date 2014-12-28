@@ -31,6 +31,25 @@ class AuthController extends AbstractAuthenticationController {
      */
     protected $userAccountRepository;
 
+	/**
+	 * @var \Project\Helpiez\Domain\Repository\InchargeAccountRepository
+	 * @Flow\Inject
+	 */
+	protected $inchargeAccountRepository;
+
+	/**
+	 * security context
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+	/**
+	 * token variable
+	 * @var \TYPO3\Flow\Security\Authentication\Token\UsernamePassword
+	 */
+	protected $token;
+
     /**
      * @param \Project\Helpiez\Domain\Model\UserAccount $userAccount
      * @return string
@@ -51,6 +70,61 @@ class AuthController extends AbstractAuthenticationController {
         $this->addFlashMessage('Account Registered Please Login', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
         $this->redirect('login', 'Frontend\Get');
     }
+
+    /**
+     * @param \Project\Helpiez\Domain\Model\UserAccount $userAccount
+     * @return string
+     */
+    public function inchargeRegistrationAction($userAccount = NULL) {
+        if ($userAccount == NULL) {
+            $this->addFlashMessage('Please fill the form', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+            $this->redirect('login', 'Backend\Get');
+        }
+        $defaultRole = array('Project.Helpiez:User', 'Project.Helpiez:Incharge');
+        if(!$userAccount->validate($this->userAccountRepository, $this)) {
+            $this->redirect('login', 'Backend\Get');
+        }
+        $account = $this->accountFactory->createAccountWithPassword($userAccount->getUsername(), $userAccount->getPassword(), $defaultRole);
+        $this->accountRepository->add($account);
+        $userAccount->setPassword('');
+        $this->userAccountRepository->add($userAccount);
+		$inchargeAccount = new \Project\Helpiez\Domain\Model\InchargeAccount();
+		$inchargeAccount->setIncharge(false);
+		$inchargeAccount->setUsername($userAccount->getUsername());
+		$this->inchargeAccountRepository->add($inchargeAccount);
+        $this->addFlashMessage('You can use this account to login in frontend as well.', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+		$this->addFlashMessage('You will not be able to login to backend unless your identity is confirmed.', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+        $this->redirect('login', 'Backend\Get');
+    }
+
+	/**
+	 *
+	 */
+	public function inchargeLoginAction() {
+		$this->token = $this->securityContext->getAuthenticationTokensOfType('\TYPO3\Flow\Security\Authentication\Token\UsernamePassword')[0];
+		if(!$this->token->isAuthenticated()) {
+			parent::logoutAction();
+			$this->addFlashMessage('Username & Password are wrong.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+			$this->redirect('login', 'Backend\Get');
+		}
+		$username = $this->token->getAccount()->getAccountIdentifier();
+		$query = $this->inchargeAccountRepository->createQuery();
+		$query->matching(
+			$query->equals('username', $username)
+		);
+		$result = $query->execute();
+		if($result->count() < 1) {
+			parent::logoutAction();
+			$this->addFlashMessage('You are not authorized to login.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+			$this->redirect('login', 'Backend\Get');
+		}
+		$inchargeAccount = $result->getFirst();
+		if(!$inchargeAccount->getIncharge()) {
+			parent::logoutAction();
+			$this->addFlashMessage('You are not authorized to login.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+		}
+		$this->redirect('login', 'Backend\Get');
+	}
 
 	/**
 	 * Is called if authentication failed.

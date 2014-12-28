@@ -11,6 +11,22 @@
   httpMethods: ['POST']
 
 -
+  name: 'Regist email'
+  uriPattern: 'organisation(.{@format})'
+  defaults:
+    '@format': 'html'
+    '@action': 'inchargeRegistration'
+  httpMethods: ['POST']
+
+-
+  name: 'Regist email'
+  uriPattern: 'organisationlogin(.{@format})'
+  defaults:
+    '@format': 'html'
+    '@action': 'inchargeLogin'
+  httpMethods: ['POST']
+
+-
   name: 'Authenticate'
   uriPattern: 'login(.{@format})'
   defaults:

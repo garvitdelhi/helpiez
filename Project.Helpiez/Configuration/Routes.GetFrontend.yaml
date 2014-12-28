@@ -3,5 +3,11 @@
   uriPattern: ''
 
 -
+  name: 'organisation url'
+  uriPattern: 'ngo/{organisationName}'
+  defaults:
+    '@action': 'organisation'
+
+-
   name: 'action redirect'
   uriPattern: '({@action})'

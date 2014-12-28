@@ -1,5 +1,5 @@
 <html>
-<f:layout name="Default" />
+<f:layout name="Frontend" />
 <f:section name="Content">
 
     <div class="top-image">
@@ -36,7 +36,6 @@
                     <div class="contact-info form">
                         <h3 class="sub-head">Login</h3>
                         <f:form action="authenticate" controller="auth" package="project.helpiez" method="post">
-                            <f:flashMessages severity="Ok"/>
                             <label accesskey="U">Username <span>*</span></label>
                             <f:form.textfield class="form-control input-field" placeholder="Username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]"></f:form.textfield>
                             <label accesskey="U">Password <span>*</span></label>
@@ -49,7 +48,7 @@
                     <div class="form">
                         <h3 class="sub-head">Register Now</h3>
                         For Organisation <f:link.action action="home" controller="Backend\Get">click here</f:link.action>
-                        <f:form action="registerEmail" objectName="userAccount" controller="auth" package="project.helpiez" method="post">
+                        <f:form action="registerEmail" objectName="userAccount" controller="auth" package="Project.Helpiez" method="post">
                             <label accesskey="U">Full name <span>*</span></label>
                             <f:form.textfield property="name" placeholder="Name" name="name" class="form-control input-field"/>
                             <label accesskey="U">Username <span>*</span></label>

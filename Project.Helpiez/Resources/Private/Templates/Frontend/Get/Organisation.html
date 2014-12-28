@@ -1,0 +1,508 @@
+<f:layout name="Frontend" />
+<f:section name="Content">
+
+
+
+
+
+<div class="top-image">
+    <img src="http://placehold.it/1366x286.jpg" alt="" />
+</div><!-- Page Top Image -->
+
+<section class="page">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page">
+                <div class="col-md-3">
+                    <img class="pull-left" src="{f:uri.resource(path:'Frontend/images/aligned-image.jpg')}"/>
+                    </br>
+                    <button style="margin-top:10px;margin-left:25px" class="theme-btn dodgerblue large">Apply for Volunteering</button>
+
+                    <button style="margin-top:10px;margin-left:25px" class="theme-btn dodgerblue large"><i class="fa fa-child"></i>Follow NGO</button>
+
+
+                </div>
+                <div class="col-md-9">
+                    <h1><i class="icon-user"></i>{organisation.name}</h1>
+                    <!--<span class="designation">CHIEF EXECUTIVE OFFICER</span>-->
+                    <ul class="profile-info">
+                        <li>
+                            <span><i class="icon-lightbulb"></i>No. of Followers:</span>
+                            <p><f:if condition="{organisation.followers}==0">
+                                <f:then>
+                                    No Followers
+                                </f:then>
+                                <f:else>
+                                    {organisation.followers}
+                                </f:else>
+                            </f:if></p>
+                        </li>
+                        <li>
+                            <span><i class="icon-envelope"></i>Page Views:</span>
+                            <p><f:if condition="{organisation.pageviews}==0">
+                                <f:then>
+                                    No Views
+                                </f:then>
+                                <f:else>
+                                    {organisation.pageviews}
+                                </f:else>
+                            </f:if></p>
+                        </li>
+                        <li>
+                            <span><i class="icon-phone"></i>Rating:</span>
+                            <p><f:if condition="{organisation.rating}==0">
+                                <f:then>
+                                    No Rating
+                                </f:then>
+                                <f:else>
+                                    {organisation.rating}/5
+                                </f:else>
+                            </f:if></p>
+                        </li>
+                        <li>
+                            <span><i class="icon-facebook"></i><a href=""><f:if condition="{organisation.fb}==0">
+                                <f:then>
+                                    No link provided
+                                </f:then>
+                                <f:else>
+                                    fb/{organisation.fb}
+                                </f:else>
+                            </f:if></a></span>
+                        </li>
+                        <li>
+                            <span><i class="icon-twitter"></i>Twitter: <f:if condition="{organisation.twitter}==0">
+                                <f:then>
+                                    No link provided
+                                </f:then>
+                                <f:else>
+                                    {organisation.twitter}
+                                </f:else>
+                            </f:if></span>
+                        </li>
+
+                    </ul>
+                    <ul class="profile-info" style="padding-left:15px">
+                        <li>
+                            <span><i class="icon-lightbulb"></i>Address:</span>
+                            <p>{organisation.address}</p>
+                        </li>
+                        <li>
+                            <span><i class="icon-envelope"></i>Email:</span>
+                            <p>{organisation.email}</p>
+                        </li>
+                        <li>
+                            <span><i class="icon-phone"></i>Phone:</span>
+                            <p><f:if condition="{organisation.number}==0">
+                                <f:then>
+                                    No link provided
+                                </f:then>
+                                <f:else>
+                                    {organisation.number}
+                                </f:else>
+                            </f:if></p>
+                        </li>
+                        <li>
+                            <span><i class="icon-link"></i>Website:</span>
+                            <p>{organisation.website}</p>
+                        </li>
+                        <li>
+                            <span><i class="icon-pencil"></i>Blog:</span>
+                            <p>{organisation.blogurl}</p>
+                        </li>
+                    </ul>
+
+                    <p>{organisation.description}</p>
+
+
+                </div>
+
+                <section class="element" id="blockquotes-style">
+                    <h3 class="sub-head">QUOTES</h3>
+
+                    <blockquote><i class="icon-quote-left"></i>{organisation.quote}<i class="icon-quote-right"></i></blockquote>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <iframe width="1280" style="width:100%;height:413px;padding-left:20px" height="720" src="http://www.youtube.com/embed/{organisation.youtube}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4">
+        <div class="tab-content profile-tabs-content" id="myTabContent">
+            <div id="profile-pic1" class="tab-pane fade in active">
+                <img src="http://placehold.it/150x150" alt="" />
+            </div>
+            <div id="profile-pic2" class="tab-pane fade in">
+                <img src="http://placehold.it/150x150" alt="" />
+            </div>
+            <div id="profile-pic3" class="tab-pane fade in">
+                <img src="http://placehold.it/150x150" alt="" />
+            </div>
+        </div>
+        <ul class="nav nav-tabs profile-tabs" id="myTab">
+            <li class="active"><a data-toggle="tab" href="#profile-pic1"><img src="http://placehold.it/170x116" alt="" /></a></li>
+            <li><a data-toggle="tab" href="#profile-pic2"><img src="http://placehold.it/170x116" alt="" /></a></li>
+            <li><a data-toggle="tab" href="#profile-pic3"><img src="http://placehold.it/170x116" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+<section class="block">
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+    <div class="sec-heading">
+        <h2><strong>Latest</strong> Projects</h2>
+    </div><!-- Section Title -->
+    <div class="our-causes">
+        <ul class="slides">
+            <li>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes1.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Title for the project</h3>
+                                <p>Misc Text<span><i>$</i>29,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3><a href="#">Feeding the Hungry(link to the project)</a></h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes2.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Donate and give clean water</h3>
+                                <p>We needed to collect: <span><i>$</i>29,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3>Feeding the Hungry</h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes3.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Supporting a day centre</h3>
+                                <p>We needed to collect: <span><i>$</i>30,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3>Feeding the Hungry</h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes1.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Donate and give clean water</h3>
+                                <p>We needed to collect: <span><i>$</i>29,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3>Feeding the Hungry</h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes2.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Donate and give clean water</h3>
+                                <p>We needed to collect: <span><i>$</i>29,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3>Feeding the Hungry</h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="causes-image">
+                            <img src="{f:uri.resource(path:'Frontend/images/our-causes3.jpg')}" alt="thumb1" />
+                            <div class="cause-heading">
+                                <h3>Supporting a day centre</h3>
+                                <p>We needed to collect: <span><i>$</i>30,000</span> </p>
+                            </div>
+                            <div class="our-causes-hover">
+                                <h3>Feeding the Hungry</h3>
+                                <span>in <i>South Africa</i></span>
+                                <p>Duis accumsan rhosn cius arcvira orem bland it sit admet. Sedi ceel ugue. In idn iacues ante. Proi rien is mi gravida viverra.</p>
+                                <span class="help"><strong>Help us</strong> to collect:</span>
+                                <span class="needed-amount"><span>$</span>20,000 </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div><!-- Causes -->
+</div>
+<div class="col-md-3">
+    <div class="sec-heading">
+        <h2><strong>Latest </strong> Events</h2>
+    </div><!-- Section Title -->
+    <div class="carusal-slider">
+        <div id="carousel-wrapper">
+            <div id="carousel">
+                <div id="news1">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Title for the Event</a></h3>
+                            <p>Desciption of the event</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news1.jpg')}" alt="" />
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+                <div id="news2">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Countries with the most billionair</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetu pisei ing elit. Pellente sque mi tellus, fringilla intedi dumdi vitae, tempor id lorem. Nunc aliquett ndun conse iquat. Lorem ipsum dolor sit amet, consectet uos pisei ing elit. Pellentesque miteds llus, intedidum vitae, tempor idorem. Nunc aliquettndunt consni equat. Nunc aliquett ndun conse iquat. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news2.jpg')}" alt="" />
+                                <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video">
+                                    <span><i class="icon-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+                <div id="news3">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Countries with the most billionair</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetu pisei ing elit. Pellente sque mi tellus, fringilla intedi dumdi vitae, tempor id lorem. Nunc aliquett ndun conse iquat. Lorem ipsum dolor sit amet, consectet uos pisei ing elit. Pellentesque miteds llus, intedidum vitae, tempor idorem. Nunc aliquettndunt consni equat. Nunc aliquett ndun conse iquat. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news3.jpg')}" alt="" />
+                                <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video">
+                                    <span><i class="icon-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+                <div id="news4">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Countries with the most billionair</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetu pisei ing elit. Pellente sque mi tellus, fringilla intedi dumdi vitae, tempor id lorem. Nunc aliquett ndun conse iquat. Lorem ipsum dolor sit amet, consectet uos pisei ing elit. Pellentesque miteds llus, intedidum vitae, tempor idorem. Nunc aliquettndunt consni equat. Nunc aliquett ndun conse iquat. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news1.jpg')}" alt="" />
+                                <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video">
+                                    <span><i class="icon-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+                <div id="news5">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Countries with the most billionair</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetu pisei ing elit. Pellente sque mi tellus, fringilla intedi dumdi vitae, tempor id lorem. Nunc aliquett ndun conse iquat. Lorem ipsum dolor sit amet, consectet uos pisei ing elit. Pellentesque miteds llus, intedidum vitae, tempor idorem. Nunc aliquettndunt consni equat. Nunc aliquett ndun conse iquat. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news2.jpg')}" alt="" />
+                                <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video">
+                                    <span><i class="icon-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+                <div id="news6">
+                    <div class="row">
+                        <div class="col-md-6 desc">
+                            <h3><a href="#" title="">Countries with the most billionair</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetu pisei ing elit. Pellente sque mi tellus, fringilla intedi dumdi vitae, tempor id lorem. Nunc aliquett ndun conse iquat. Lorem ipsum dolor sit amet, consectet uos pisei ing elit. Pellentesque miteds llus, intedidum vitae, tempor idorem. Nunc aliquettndunt consni equat. Nunc aliquett ndun conse iquat. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="{f:uri.resource(path:'Frontend/images/recent-news3.jpg')}" alt="" />
+                                <a class="html5lightbox" href="http://player.vimeo.com/video/31943945?color=ffffff" title="This Is a Demo Video">
+                                    <span><i class="icon-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- News -->
+            </div>
+        </div>
+        <div id="thumbs-wrapper">
+            <div id="thumbs">
+                <a href="#news1" class="selected"><img src="{f:uri.resource(path:'Frontend/images/recent-news1-thumb.jpg')}" alt="" /><span class="carusal-our-news">Emergency Supplies</span></a>
+                <a href="#news2"><img src="{f:uri.resource(path:'Frontend/images/recent-news2-thumb.jpg')}" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
+                <a href="#news3"><img src="{f:uri.resource(path:'Frontend/images/recent-news3-thumb.jpg')}" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
+                <a href="#news4"><img src="{f:uri.resource(path:'Frontend/images/recent-news1-thumb.jpg')}" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
+                <a href="#news5"><img src="{f:uri.resource(path:'Frontend/images/recent-news2-thumb.jpg')}" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
+                <a href="#news6"><img src="{f:uri.resource(path:'Frontend/images/recent-news3-thumb.jpg')}" alt="" /><span class="carusal-our-news">Safety Quiz and Tips </span></a>
+            </div><!-- Selectors -->
+            <a id="prev" href="#"><i class="icon-angle-left"></i></a>
+            <a id="next" href="#"><i class="icon-angle-right"></i></a>
+        </div>
+    </div>
+</div><!-- Recent News -->
+
+
+</div>
+</div>
+</section>
+<section class="block">
+    <div class="container">
+        <div class="row">
+
+
+
+
+        </div>
+    </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#layerslider').layerSlider({
+            skinsPath : 'http://project.helpiez/_Resources/Static/Packages/Project.Helpiez/Frontend/layerslider/skins/',
+            skin : 'defaultskin',
+            responsive: true,
+            responsiveUnder: 1200,
+            pauseOnHover: false,
+            showCircleTimer: false,
+            navStartStop:false,
+            navButtons:false
+        }); // LAYER SLIDER
+
+        $(function() {
+
+
+
+            $('#carousel').carouFredSel({
+                responsive: true,
+                circular: false,
+                auto: false,
+                items: {
+                    visible: 1,
+                    width: 20
+                },
+                scroll: {
+                    fx: 'directscroll'
+                }
+            });
+            $('#thumbs').carouFredSel({
+                responsive: true,
+                circular: false,
+                infinite: false,
+                auto: false,
+                prev: '#prev',
+                next: '#next',
+                items: {
+                    visible: {
+                        min: 1,
+                        max: 6
+                    },
+                    width: 200,
+                    height: '80%'
+                }
+            });
+            $('#thumbs a').click(function() {
+                $('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+                $('#thumbs a').removeClass('selected');
+                $(this).addClass('selected');
+                return false;
+            });
+
+        });
+
+
+    });
+
+</script>
+<script>
+    $(window).load(function(){
+        $('.our-causes').flexslider({
+            animation: "slide",
+            animationLoop: false,
+            controlNav: true,
+            maxItems: 1,
+            pausePlay: false,
+            mousewheel:true,
+            start: function(slider){
+                $('body').removeClass('loading');
+            }
+        });
+
+        $('.footer_carousel').flexslider({
+            animation: "slide",
+            animationLoop: false,
+            slideShow:false,
+            controlNav: true,
+            maxItems: 1,
+            pausePlay: false,
+            mousewheel:true,
+            start: function(slider){
+                $('body').removeClass('loading');
+            }
+        });
+        $('.slideshow').flexslider({
+            animation: "fade",
+            animationLoop: false,
+            slideShow:false,
+            controlNav: true,
+            maxItems: 1,
+            pausePlay: false,
+            mousewheel:true,
+            start: function(slider){
+                $('body').removeClass('loading');
+            }
+        });
+
+
+    });
+</script>
+</f:section>

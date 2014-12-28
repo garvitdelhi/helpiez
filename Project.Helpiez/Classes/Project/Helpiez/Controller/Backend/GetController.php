@@ -23,6 +23,9 @@ class GetController extends ActionController {
      * Home Action
      */
     public function homeAction() {
+        if(!$this->authenticationManager->isAuthenticated()) {
+            $this->redirect('login', 'Backend\Get');
+        }
     }
 
     /**
@@ -30,16 +33,7 @@ class GetController extends ActionController {
      */
     public function loginAction() {
         if($this->authenticationManager->isAuthenticated()) {
-            $this->redirect('home', 'Frontend\Get');
-        }
-    }
-
-    /**
-     * Profile Action
-     */
-    public function profileAction() {
-        if(!$this->authenticationManager->isAuthenticated()) {
-            $this->redirect('home', 'Frontend\Get');
+            $this->redirect('home', 'Backend\Get');
         }
     }
 

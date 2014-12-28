@@ -19,11 +19,44 @@ class GetController extends ActionController {
      */
     protected $authenticationManager;
 
+	/**
+	 * @var \Project\Helpiez\Domain\Repository\OrganisationRepository
+	 * @Flow\Inject
+	 */
+	protected $organisationRepository;
+
+	/**
+	 * @var \Project\Helpiez\Domain\Model\Organisation
+	 * @Flow\Inject
+	 */
+	protected $organisation;
+
     /**
      * Home Action
      */
     public function homeAction() {
     }
+
+	/**
+	 * @param string $organisationName
+	 * @return string
+	 */
+	public function organisationAction($organisationName) {
+		$this->persistenceManager->whitelistObject($this->organisation);
+		$organisationName = str_replace("_", " ", $organisationName);
+		$query = $this->organisationRepository->createQuery();
+		$query->matching(
+			$query->equals('name', $organisationName)
+		);
+		$result = $query->execute();
+		if($result->count() < 1) {
+			$this->redirect('home', 'Frontend\Get');
+		}
+		$this->organisation = $result->getFirst();
+		$this->organisation->setPageViews($this->organisation->getPageViews() + 1);
+		$this->organisationRepository->update($this->organisation);
+		$this->view->assign('organisation', $this->organisation);
+	}
 
     /**
      * Login Action
