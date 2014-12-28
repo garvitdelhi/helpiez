@@ -37,6 +37,12 @@ class GetController extends ActionController {
     public function homeAction() {
     }
 
+    /**
+     * Search Action
+     */
+    public function searchAction() {
+    }
+
 	/**
 	 * @param string $organisationName
 	 * @return string
