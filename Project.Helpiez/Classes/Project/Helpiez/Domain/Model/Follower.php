@@ -16,41 +16,40 @@ class Follower {
 
 	/**
 	 * @var string
-	 * @ORM\Column(type="string", length=255, unique=true)
-	 * @ORM\OneToOne(targetEntity="\Project\Helpiez\Domain\Model\UserAccount", mappedBy="Follower")
+	 * @ORM\Column(type="string", length=255)
 	 */
-	protected $userAccount;
+	protected $userName;
 
 	/**
-	 * @var \Project\Helpiez\Domain\Model\Organisation
-	 * @ORM\OneToOne(targetEntity="\Project\Helpiez\Domain\Model\Organisation", mappedBy="Follower")
+	 * @var string
+	 * @ORM\Column(type="text", length=500)
 	 */
 	protected $organisation;
 
 	/**
-	 * @return \Project\Helpiez\Domain\Model\UserAccount
+	 * @return string
 	 */
-	public function getUserAccount() {
-		return $this->userAccount;
+	public function getUserName() {
+		return $this->userName;
 	}
 
 	/**
-	 * @param \Project\Helpiez\Domain\Model\UserAccount $userAccount
+	 * @param string
 	 * @return void
 	 */
-	public function setUserAccount($userAccount) {
-		$this->userAccount = $userAccount;
+	public function setUserName($userName) {
+		$this->userName = $userName;
 	}
 
 	/**
-	 * @return \Project\Helpiez\Domain\Model\Organisation
+	 * @return string
 	 */
 	public function getOrganisation() {
 		return $this->organisation;
 	}
 
 	/**
-	 * @param \Project\Helpiez\Domain\Model\Organisation $organisation
+	 * @param string
 	 * @return void
 	 */
 	public function setOrganisation($organisation = null) {

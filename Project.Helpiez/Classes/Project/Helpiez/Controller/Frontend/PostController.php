@@ -56,12 +56,6 @@ class PostController extends ActionController {
 	protected $organisationRepository;
 
 	/**
-	 * @var \Project\Helpiez\Domain\Repository\PendingOrganisationRepository
-	 * @Flow\Inject
-	 */
-	protected $pendingOrganisationRepository;
-
-	/**
 	 * @var \Project\Helpiez\Domain\Model\Follower
 	 * @Flow\Inject
 	 */
@@ -103,7 +97,7 @@ class PostController extends ActionController {
 			return "false";
 		}
 		$userAccount = $result->getFirst();
-		$this->follower->setUserAccount($userAccount);
+		$this->follower->setUserName($username);
 
 		/**
 		 * getting the organisation from it's name
@@ -117,7 +111,7 @@ class PostController extends ActionController {
 			return "false";
 		}
 		$organisation= $result->getFirst();
-		$this->follower->setOrganisation($organisation);
+		$this->follower->setOrganisation($organisationName);
 
 		/**
 		 * if follower exists return false
@@ -125,7 +119,7 @@ class PostController extends ActionController {
 		$query = $this->followerRepository->createQuery();
 		$query->matching(
 			$query->logicalAnd(
-				$query->equals('userAccount', $userAccount),
+				$query->equals('userName', $userName),
 				$query->equals('organisation', $organisation)
 			)
 		);
@@ -165,8 +159,7 @@ class PostController extends ActionController {
 		if($result->count() < 1) {
 			return "false";
 		}
-		$userAccount = $result->getFirst();
-		$this->rating->setUserAccount($userAccount);
+		$this->rating->setUserName($username);
 
 		/**
 		 * getting the organisation from it's name
@@ -179,8 +172,8 @@ class PostController extends ActionController {
 		if($result->count() < 1) {
 			return "false";
 		}
-		$organisation= $result->getFirst();
-		$this->rating->setOrganisation($organisation);
+		$organisation = $result->getFirst();
+		$this->rating->setOrganisation($organisationName);
 
 		$this->rating->setRating($rate);
 
@@ -190,8 +183,8 @@ class PostController extends ActionController {
 		$query = $this->ratingRepository->createQuery();
 		$query->matching(
 			$query->logicalAnd(
-				$query->equals('userAccount', $userAccount),
-				$query->equals('organisation', $organisation)
+				$query->equals('userName', $username),
+				$query->equals('organisation', $organisationName)
 			)
 		);
 		$result = $query->execute();
@@ -199,6 +192,18 @@ class PostController extends ActionController {
 			$oldRating = $result->getFirst();
 			$oldRating->setRating($rate);
 			$this->ratingRepository->update($oldRating);
+			$query = $this->ratingRepository->createQuery();
+			$query->matching(
+				$query->equals('organisation', $organisationName)
+			);
+			$result = $query->execute();
+			$count = $result->count();
+
+			$rating = ($organisation->getRating() * $count + $rate ) / ( $count + 1 );
+
+			$organisation->setRating($rating);
+
+			$this->organisationRepository->update($organisation);
 			return "true";
 		}
 
@@ -209,7 +214,7 @@ class PostController extends ActionController {
 
 		$query = $this->ratingRepository->createQuery();
 		$query->matching(
-			$query->equals('organisation', $organisation)
+			$query->equals('organisation', $organisationName)
 		);
 		$result = $query->execute();
 		$count = $result->count();
@@ -247,8 +252,7 @@ class PostController extends ActionController {
 		if($result->count() < 1) {
 			return "false";
 		}
-		$userAccount = $result->getFirst();
-		$this->review->setUserAccount($userAccount);
+		$this->review->setUserName($username);
 
 		/**
 		 * getting the organisation with it's name
@@ -262,7 +266,7 @@ class PostController extends ActionController {
 			return "false";
 		}
 		$organisation= $result->getFirst();
-		$this->review->setOrganisation($organisation);
+		$this->review->setOrganisation($organisationName);
 
 		$this->review->setReview($review);
 
@@ -274,8 +278,8 @@ class PostController extends ActionController {
 		$query = $this->reviewRepository->createQuery();
 		$query->matching(
 			$query->logicalAnd(
-				$query->equals('userAccount', $userAccount),
-				$query->equals('organisation', $organisation)
+				$query->equals('userName', $username),
+				$query->equals('organisation', $organisationName)
 			)
 		);
 		$result = $query->execute();
@@ -295,11 +299,11 @@ class PostController extends ActionController {
 	}
 
 	/**
-	 * @param \Project\Helpiez\Domain\Model\PendingOrganisation $pendingOrganisation
+	 * @param \Project\Helpiez\Domain\Model\Organisation $organisation
 	 * @return string
 	 */
-	public function addOrganisationAction($pendingOrganisation) {
-		$organisationName = $pendingOrganisation->getName();
+	public function addOrganisationAction($organisation) {
+		$organisationName = $organisation->getName();
 
 		$query = $this->organisationRepository->createQuery();
 		$query->matching(
@@ -310,16 +314,11 @@ class PostController extends ActionController {
 			return "false";
 		}
 
-		$query = $this->pendingOrganisationRepository->createQuery();
-		$query->matching(
-			$query->equals('name', $organisationName)
-		);
-		$result = $query->execute();
-		if($result->count() < 1) {
-			return "false";
-		}
+		$organisation->setStatus(false);
 
-		$this->pendingOrganisationRepository->add($pendingOrganisation);
+		$this->organisationRepository->add($organisation);
 		return "true";
 	}
+
+
 }

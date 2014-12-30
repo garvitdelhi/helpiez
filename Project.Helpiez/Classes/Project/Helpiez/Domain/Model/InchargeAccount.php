@@ -24,10 +24,14 @@ class InchargeAccount {
 
 	/**
 	 * @var \Project\Helpiez\Domain\Model\Organisation
-	 * @ORM\OneToOne(targetEntity="\Project\Helpiez\Domain\Model\Organisation", mappedBy="Review")
-	 * @ORM\Column(nullable=true)
+	 * @ORM\ManyToOne(targetEntity="\Project\Helpiez\Domain\Model\Organisation")
 	 */
 	protected $organisation;
+
+	/**
+	 * @var string
+	 */
+	protected $organisationName;
 
 	/**
 	 * @var bool
@@ -46,8 +50,23 @@ class InchargeAccount {
 	 * @param \Project\Helpiez\Domain\Model\Organisation $organisation
 	 * @return void
 	 */
-	public function setOrganisation($organisation = null) {
+	public function setOrganisation($organisation) {
 		$this->organisation = $organisation;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getOrganisationName() {
+		return $this->organisationName;
+	}
+
+	/**
+	 * @param string $organisationName
+	 * @return void
+	 */
+	public function setOrganisationName($organisationName) {
+		$this->organisationName = $organisationName;
 	}
 
 	/**
