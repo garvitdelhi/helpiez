@@ -119,7 +119,7 @@ class PostController extends ActionController {
 		$query = $this->followerRepository->createQuery();
 		$query->matching(
 			$query->logicalAnd(
-				$query->equals('userName', $userName),
+				$query->equals('userName', $username),
 				$query->equals('organisation', $organisation)
 			)
 		);
