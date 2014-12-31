@@ -26,10 +26,22 @@ class GetController extends ActionController {
 	protected $organisationRepository;
 
 	/**
+	 * @var \Project\Helpiez\Domain\Repository\UserAccountRepository
+	 * @Flow\Inject
+	 */
+	protected $userAccountRepository;
+
+	/**
 	 * @var \Project\Helpiez\Domain\Model\Organisation
 	 * @Flow\Inject
 	 */
 	protected $organisation;
+
+	/**
+	 * @var \Project\Helpiez\Controller\AuthController
+	 * @Flow\Inject
+	 */
+	protected $authController;
 
     /**
      * Home Action
@@ -80,6 +92,15 @@ class GetController extends ActionController {
         if(!$this->authenticationManager->isAuthenticated()) {
             $this->redirect('home', 'Frontend\Get');
         }
+		$username = $this->authenticationManager->getSecurityContext()->getAccount()->getAccountIdentifier();
+		$query = $this->userAccountRepository->createQuery();
+		$query->matching(
+			$query->equals("username", $username)
+		);
+		$result = $query->execute();
+		if($result->count() < 1) $this->authController->logoutAction();
+		$userAccount = $result->getFirst();
+		$this->view->assign("user", $userAccount);
     }
 
 }

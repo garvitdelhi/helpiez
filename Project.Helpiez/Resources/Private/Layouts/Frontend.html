@@ -86,7 +86,17 @@
                     <li><a>Projects</a></li>
                     <f:security.ifHasRole role="User">
                         <f:then>
-                            <li><f:link.action action="profile" controller="Frontend\Get">Hi! Name</f:link.action></li>
+                            <li><a>Hi!</a>
+                                <ul>
+                                    <li><f:link.action action="profile" controller="Frontend\Get">Profile</f:link.action></li>
+                                    <f:security.ifHasRole role="Incharge">
+                                        <f:then>
+                                            <li><f:link.action action="home" controller="Backend\Get">Backend</f:link.action></li>
+                                        </f:then>
+                                    </f:security.ifHasRole>
+                                    <li><f:link.action action="logout" controller="auth">Logout</f:link.action></li>
+                                </ul>
+                            </li>
                         </f:then>
                         <f:else>
                             <li><f:link.action action="login" controller="Frontend\Get">Login</f:link.action></li>

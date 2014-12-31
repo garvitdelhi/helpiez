@@ -105,22 +105,41 @@ class Organisation {
 	protected $pageViews;
 
 	/**
-	 * @var int
-	 * @ORM\Column(type="integer", nullable=true)
-	 */
-	protected $followers;
-
-	/**
-	 * @var int
-	 * @ORM\Column(type="integer", nullable=true)
-	 */
-	protected $rating;
-
-	/**
 	 * @var bool
 	 * @ORM\Column(type="boolean")
 	 */
 	protected $status = false;
+
+	/**
+	 * @var \DateTime
+	 */
+	protected $timestamp;
+
+	/**
+	 * @return string
+	 */
+	public function getTimestamp() {
+		return $this->timestamp;
+	}
+
+	/**
+	 * @param string $timestamp
+	 * @return void
+	 */
+	public function setTimestamp($timestamp = null) {
+		if($timestamp != null)
+			$this->timestamp = $timestamp;
+		else
+			$this->timestamp = new \DateTime();
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
+	 */
+	public function updatedTimestamps() {
+		$this->setTimestamp(new \DateTime('now'));
+	}
 
 
 	/**
@@ -346,36 +365,6 @@ class Organisation {
 	 */
 	public function setPageViews($pageViews) {
 		$this->pageViews = $pageViews;
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getFollowers() {
-		return $this->followers;
-	}
-
-	/**
-	 * @param integer $followers
-	 * @return void
-	 */
-	public function setFollowers($followers) {
-		$this->followers = $followers;
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getRating() {
-		return $this->rating;
-	}
-
-	/**
-	 * @param integer $rating
-	 * @return void
-	 */
-	public function setRating($rating) {
-		$this->rating = $rating;
 	}
 
 	/**
