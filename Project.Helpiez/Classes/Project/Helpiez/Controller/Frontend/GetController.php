@@ -60,6 +60,11 @@ class GetController extends ActionController {
      */
     public function userProfileAction() {
     }
+    /**
+     * Project Action
+     */
+    public function projectAction() {
+    }
 
 	/**
 	 * @param string $organisationName
