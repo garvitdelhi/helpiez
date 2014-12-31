@@ -43,6 +43,12 @@ class GetController extends ActionController {
     public function searchAction() {
     }
 
+    /**
+     * User Profile Action
+     */
+    public function userProfileAction() {
+    }
+
 	/**
 	 * @param string $organisationName
 	 * @return string
