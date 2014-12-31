@@ -19,6 +19,12 @@ class GetController extends ActionController {
      */
     protected $authenticationManager;
 
+	/**
+	 * @var \Project\Helpiez\Domain\Repository\OrganisationRepository
+	 * @Flow\Inject
+	 */
+	protected $organisationRepository;
+
     /**
      * Home Action
      */
@@ -35,6 +41,18 @@ class GetController extends ActionController {
         if($this->authenticationManager->isAuthenticated()) {
             $this->redirect('home', 'Backend\Get');
         }
+		$query = $this->organisationRepository->createQuery();
+		$query->matching(
+			$query->equals('status', true)
+		);
+		$result = $query->execute();
+		$result = $result->toArray();
+		$organisations = array();
+		foreach($result as $organisation ) {
+			$organisations[$organisation->getName()] = $organisation->getName();
+		}
+		$organisations["other"] = "other";
+		$this->view->assign('organisations', $organisations);
     }
 
 }

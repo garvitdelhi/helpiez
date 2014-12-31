@@ -22,13 +22,13 @@ class Organisation {
 
 	/**
 	 * @var string
-	 * @ORM\Column(type="text", length=1000)
+	 * @ORM\Column(type="text", length=1000, nullable=true)
 	 */
 	protected $address;
 
 	/**
 	 * @var string
-	 * @ORM\Column(type="string", length=10)
+	 * @ORM\Column(type="string", length=10, nullable=true)
 	 */
 	protected $region;
 
@@ -115,6 +115,12 @@ class Organisation {
 	 * @ORM\Column(type="integer", nullable=true)
 	 */
 	protected $rating;
+
+	/**
+	 * @var bool
+	 * @ORM\Column(type="boolean")
+	 */
+	protected $status = false;
 
 
 	/**
@@ -370,6 +376,21 @@ class Organisation {
 	 */
 	public function setRating($rating) {
 		$this->rating = $rating;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getStatus() {
+		return $this->status;
+	}
+
+	/**
+	 * @param integer $status
+	 * @return void
+	 */
+	public function setStatus($status) {
+		$this->status = $status;
 	}
 
 }

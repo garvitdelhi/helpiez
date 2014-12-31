@@ -32,6 +32,12 @@ class AuthController extends AbstractAuthenticationController {
     protected $userAccountRepository;
 
 	/**
+	 * @var \Project\Helpiez\Domain\Repository\OrganisationRepository
+	 * @Flow\Inject
+	 */
+	protected $organisationRepository;
+
+	/**
 	 * @var \Project\Helpiez\Domain\Repository\InchargeAccountRepository
 	 * @Flow\Inject
 	 */
@@ -73,9 +79,10 @@ class AuthController extends AbstractAuthenticationController {
 
     /**
      * @param \Project\Helpiez\Domain\Model\UserAccount $userAccount
+	 * @param string $organisationName
      * @return string
      */
-    public function inchargeRegistrationAction($userAccount = NULL) {
+    public function inchargeRegistrationAction($userAccount = NULL, $organisationName) {
         if ($userAccount == NULL) {
             $this->addFlashMessage('Please fill the form', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
             $this->redirect('login', 'Backend\Get');
@@ -91,6 +98,26 @@ class AuthController extends AbstractAuthenticationController {
 		$inchargeAccount = new \Project\Helpiez\Domain\Model\InchargeAccount();
 		$inchargeAccount->setIncharge(false);
 		$inchargeAccount->setUsername($userAccount->getUsername());
+
+		/**
+		 * look if organisation exists.
+		 */
+		$query = $this->organisationRepository->createQuery();
+		$query->matching(
+			$query->equals('name', $organisationName)
+		);
+		$result = $query->execute();
+		if($result->count() < 1 ) {
+			$organisation = new \Project\Helpiez\Domain\Model\Organisation();
+			$organisation->setName($organisationName);
+			$organisation->setStatus(false);
+			$this->organisationRepository->add($organisation);
+		} else {
+			$organisation = $result->getFirst();
+		}
+
+		$inchargeAccount->setOrganisation($organisation);
+		$inchargeAccount->setOrganisationName($organisationName);
 		$this->inchargeAccountRepository->add($inchargeAccount);
         $this->addFlashMessage('You can use this account to login in frontend as well.', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
 		$this->addFlashMessage('You will not be able to login to backend unless your identity is confirmed.', '', \TYPO3\Flow\Error\Message::SEVERITY_OK);

@@ -79,19 +79,28 @@
                     <f:form objectName="userAccount" controller="auth" action="inchargeRegistration" package="Project.Helpiez" method="post">
                         <fieldset>
                             <div class="form-group">
+                                <label>Name</label>
                                 <f:form.textfield name="name" property="name" placeholder="Name" class="form-control" required="TRUE"/>
                             </div>
                             <div class="form-group">
+                                <label>Phone Number</label>
                                 <f:form.textfield type="number" name="number" property="number" placeholder="Phone Number" class="form-control" required="TRUE"/>
                             </div>
                             <div class="form-group">
+                                <label>Email</label>
                                 <f:form.textfield type="email" name="email" property="email" placeholder="Email" class="form-control" required="TRUE"/>
                             </div>
                             <div class="form-group">
+                                <label>Username</label>
                                 <f:form.textfield name="username" property="username" placeholder="Username" class="form-control" required="TRUE"/>
                             </div>
                             <div class="form-group">
+                                <label>Password</label>
                                 <f:form.password class="form-control" property="password" placeholder="Password" name="password" additionalAttributes="{required: TRUE}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Organisation</label>
+                                <f:form.select id="organisation" class="form-control" name="organisationName" options="{organisations}" />
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <input type='submit' class="btn btn-lg btn-primary btn-block" value='Signup' />
@@ -103,4 +112,23 @@
     </div>
 </div>
 </body>
+<script>
+    $("#organisation").click(function() {
+        var $this = $(this);
+        var parent = $this.parent();
+        var $other = $("#other");
+        if(!$other.length) {
+            if($this.find(":selected").text() == "other") {
+                parent.append('' +
+                '       <div id="other" class="form-group">' +
+                '           <input placeholder="Organisation" class="form-control" name="organisationName" required="required" type="text">' +
+                '       </div>');
+            } else {
+                $other.remove();
+            }
+        } else if($this.find(":selected").text() != "other") {
+            $other.remove();
+        }
+    });
+</script>
 </html>
