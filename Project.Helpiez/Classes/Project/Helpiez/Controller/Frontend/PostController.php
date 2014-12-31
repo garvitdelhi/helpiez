@@ -211,20 +211,6 @@ class PostController extends ActionController {
 		 * else add rating
 		 */
 		$this->ratingRepository->add($this->rating);
-
-		$query = $this->ratingRepository->createQuery();
-		$query->matching(
-			$query->equals('organisation', $organisationName)
-		);
-		$result = $query->execute();
-		$count = $result->count();
-
-		$rating = ($organisation->getRating() * $count + $rate ) / ( $count + 1 );
-
-		$organisation->setRating($rating);
-
-		$this->organisationRepository->update($organisation);
-
 		return "true";
 	}
 
@@ -318,6 +304,13 @@ class PostController extends ActionController {
 
 		$this->organisationRepository->add($organisation);
 		return "true";
+	}
+
+	/**
+	 * @param string $key
+	 */
+	public function searchAction($key){
+
 	}
 
 

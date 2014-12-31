@@ -27,6 +27,37 @@ class Follower {
 	protected $organisation;
 
 	/**
+	 * @var \DateTime
+	 */
+	protected $timestamp;
+
+	/**
+	 * @return string
+	 */
+	public function getTimestamp() {
+		return $this->timestamp;
+	}
+
+	/**
+	 * @param string $timestamp
+	 * @return void
+	 */
+	public function setTimestamp($timestamp = null) {
+		if($timestamp != null)
+			$this->timestamp = $timestamp;
+		else
+			$this->timestamp = new \DateTime();
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
+	 */
+	public function updatedTimestamps() {
+		$this->setTimestamp(new \DateTime('now'));
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getUserName() {

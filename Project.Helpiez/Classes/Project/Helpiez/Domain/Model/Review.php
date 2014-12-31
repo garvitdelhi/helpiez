@@ -63,8 +63,19 @@ class Review {
 	 * @param string $timestamp
 	 * @return void
 	 */
-	public function setTimestamp($timestamp) {
-		$this->timestamp = $timestamp;
+	public function setTimestamp($timestamp = null) {
+		if($timestamp != null)
+			$this->timestamp = $timestamp;
+		else
+			$this->timestamp = new \DateTime();
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
+	 */
+	public function updatedTimestamps() {
+		$this->setTimestamp(new \DateTime('now'));
 	}
 
 	/**

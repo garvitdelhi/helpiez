@@ -51,6 +51,12 @@ class AuthController extends AbstractAuthenticationController {
 	protected $securityContext;
 
 	/**
+	 * @var \TYPO3\Flow\Security\Policy\PolicyService
+	 * @Flow\Inject
+	 */
+	protected $policyService;
+
+	/**
 	 * token variable
 	 * @var \TYPO3\Flow\Security\Authentication\Token\UsernamePassword
 	 */
@@ -87,7 +93,7 @@ class AuthController extends AbstractAuthenticationController {
             $this->addFlashMessage('Please fill the form', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
             $this->redirect('login', 'Backend\Get');
         }
-        $defaultRole = array('Project.Helpiez:User', 'Project.Helpiez:Incharge');
+        $defaultRole = array('Project.Helpiez:User');
         if(!$userAccount->validate($this->userAccountRepository, $this)) {
             $this->redirect('login', 'Backend\Get');
         }
@@ -146,9 +152,24 @@ class AuthController extends AbstractAuthenticationController {
 			$this->redirect('login', 'Backend\Get');
 		}
 		$inchargeAccount = $result->getFirst();
+		$inchargeRole = $this->policyService->getRole("Project.Helpiez:Incharge");
 		if(!$inchargeAccount->getIncharge()) {
+			$account = $this->token->getAccount();
+			if($account->hasRole($inchargeRole)) {
+				$account->removeRole($this->policyService->getRole("Project.Helpiez:Incharge"));
+				$this->accountRepository->update($account);
+			}
 			parent::logoutAction();
 			$this->addFlashMessage('You are not authorized to login.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+		} else {
+			$account = $this->token->getAccount();
+	 		$roles = $account->getRoles();
+			if(!$account->hasRole($inchargeRole)) {
+				$account->addRole($inchargeRole);
+				$this->accountRepository->update($account);
+				$this->addFlashMessage('You still don\'t have incharge.', '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+			}
+
 		}
 		$this->redirect('login', 'Backend\Get');
 	}
