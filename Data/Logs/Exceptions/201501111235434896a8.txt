@@ -1,0 +1,62 @@
+Uncaught exception #1237900529 in line 233 of /var/www/helpiez/Packages/Framework/TYPO3.Fluid/Classes/TYPO3/Fluid/Core/ViewHelper/AbstractViewHelper.php: The argument "arguments" was registered with type "array", but is of type "string" in view helper "TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper"
+
+45 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::validateArguments()
+44 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+43 TYPO3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode_Original::evaluate(TYPO3\Fluid\Core\Rendering\RenderingContext)
+42 TYPO3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(TYPO3\Fluid\Core\Rendering\RenderingContext)
+41 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+40 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::TYPO3\Fluid\Core\ViewHelper\{closure}()
+39 TYPO3\Fluid\ViewHelpers\ForViewHelper_Original::renderStatic(array|5|, Closure, TYPO3\Fluid\Core\Rendering\RenderingContext)
+38 TYPO3\Fluid\ViewHelpers\ForViewHelper_Original::render(array|1|, "event", "", FALSE, NULL)
+37 call_user_func_array(array|2|, array|5|)
+36 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+35 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+34 TYPO3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode_Original::evaluate(TYPO3\Fluid\Core\Rendering\RenderingContext)
+33 TYPO3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(TYPO3\Fluid\Core\Rendering\RenderingContext)
+32 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+31 TYPO3\Fluid\ViewHelpers\SectionViewHelper_Original::render()
+30 call_user_func_array(array|2|, array|0|)
+29 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+28 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+27 TYPO3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode_Original::evaluate(TYPO3\Fluid\Core\Rendering\RenderingContext)
+26 TYPO3\Fluid\View\AbstractTemplateView::renderSection("Content", array|1|, FALSE)
+25 TYPO3\Fluid\ViewHelpers\RenderViewHelper_Original::render("Content", NULL, array|0|, FALSE)
+24 call_user_func_array(array|2|, array|4|)
+23 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+22 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+21 FluidCache_Project_Helpiez_layout_Frontend_ac27f7d5aa50fcaf5bb60363e68cdd9320c476e3::render(TYPO3\Fluid\Core\Rendering\RenderingContext)
+20 TYPO3\Fluid\View\AbstractTemplateView::render()
+19 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+18 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+17 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+16 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+15 call_user_func_array(array|2|, array|2|)
+14 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+13 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+12 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+11 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+10 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+9 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+8 call_user_func_array(array|2|, array|2|)
+7 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call("dispatch", array|2|)
+6 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+5 TYPO3\Flow\Mvc\DispatchComponent_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+4 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+3 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+HTTP REQUEST:
+GET /search?key=bling&box=ngo HTTP/1.1
+Host: project.helpiez
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+
+HTTP RESPONSE:
+[response was empty]

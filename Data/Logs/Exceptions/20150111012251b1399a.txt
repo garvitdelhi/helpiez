@@ -1,0 +1,48 @@
+Uncaught exception #1377788621 in line 136 of /var/www/helpiez/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Persistence_Doctrine_PersistenceManager.php: Detected modified or new objects (Project\Helpiez\Domain\Model\Organisation, uuid:406b94eb-a1bd-caa4-c7ca-4533b728e319) to be persisted which is not allowed for "safe requests"
+According to the HTTP 1.1 specification, so called "safe request" (usually GET or HEAD requests)
+should not change your data on the server side and should be considered read-only. If you need to add,
+modify or remove data, you should use the respective request methods (POST, PUT, DELETE and PATCH).
+
+If you need to store some data during a safe request (for example, logging some data for your analytics),
+you are still free to call PersistenceManager->persistAll() manually.
+
+26 TYPO3\Flow\Persistence\AbstractPersistenceManager::throwExceptionIfObjectIsNotWhitelisted(Project\Helpiez\Domain\Model\Organisation)
+25 TYPO3\Flow\Persistence\Doctrine\PersistenceManager_Original::persistAll(TRUE)
+24 TYPO3\Flow\Package::TYPO3\Flow\{closure}(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response, Project\Helpiez\Controller\Frontend\GetController, "TYPO3\Flow\Mvc\Dispatcher::afterControllerInvocation")
+23 Closure::__invoke(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response, Project\Helpiez\Controller\Frontend\GetController, "TYPO3\Flow\Mvc\Dispatcher::afterControllerInvocation")
+22 call_user_func_array(array|2|, array|4|)
+21 TYPO3\Flow\SignalSlot\Dispatcher::dispatch("TYPO3\Flow\Mvc\Dispatcher", "afterControllerInvocation", array|3|)
+20 TYPO3\Flow\SignalSlot\SignalAspect_Original::forwardSignalToDispatcher(TYPO3\Flow\Aop\JoinPoint)
+19 TYPO3\Flow\Aop\Advice\AbstractAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+18 TYPO3\Flow\Mvc\Dispatcher::emitAfterControllerInvocation(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response, Project\Helpiez\Controller\Frontend\GetController)
+17 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+16 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+15 call_user_func_array(array|2|, array|2|)
+14 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+13 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+12 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+11 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+10 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+9 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+8 call_user_func_array(array|2|, array|2|)
+7 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call("dispatch", array|2|)
+6 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+5 TYPO3\Flow\Mvc\DispatchComponent_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+4 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+3 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+HTTP REQUEST:
+GET /try HTTP/1.1
+Host: project.helpiez
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+
+
+HTTP RESPONSE:
+[response was empty]

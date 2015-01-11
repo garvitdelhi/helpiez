@@ -1,0 +1,353 @@
+Uncaught exception #1407060572 in line 678 of /var/www/helpiez/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Fluid_Core_Parser_TemplateParser.php: The ViewHelper "<f:action>" could not be resolved.
+Based on your spelling, the system would load the class "TYPO3\Fluid\ViewHelpers\ActionViewHelper", however this class does not exist.
+
+29 TYPO3\Fluid\Core\Parser\TemplateParser_Original::initializeViewHelperAndAddItToStack(TYPO3\Fluid\Core\Parser\ParsingState, "f", "action", array|0|)
+28 TYPO3\Fluid\Core\Parser\TemplateParser_Original::objectAccessorHandler(TYPO3\Fluid\Core\Parser\ParsingState, "", "", "f:action()", "")
+27 TYPO3\Fluid\Core\Parser\TemplateParser_Original::textAndShorthandSyntaxHandler(TYPO3\Fluid\Core\Parser\ParsingState, "{f:action()} == 'home'", 1)
+26 TYPO3\Fluid\Core\Parser\TemplateParser_Original::buildObjectTree(array|1|, 1)
+25 TYPO3\Fluid\Core\Parser\TemplateParser_Original::buildArgumentObjectTree("{f:action()} == 'home'")
+24 TYPO3\Fluid\Core\Parser\TemplateParser_Original::parseArguments(" condition="{f:action()} == 'home'"")
+23 TYPO3\Fluid\Core\Parser\TemplateParser_Original::openingViewHelperTagHandler(TYPO3\Fluid\Core\Parser\ParsingState, "f", "if", " condition="{f:action()} == 'home'"", FALSE)
+22 TYPO3\Fluid\Core\Parser\TemplateParser_Original::buildObjectTree(array|105|, 2)
+21 TYPO3\Fluid\Core\Parser\TemplateParser_Original::parse("<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Helpiez</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100|Open+Sans:400,300,400italic,300italic,600,600italic,700italic,700,800|Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- Styles -->
+    <link href="{f:uri.resource(path:'Frontend/css/bootstrap.css')}" rel="stylesheet" type="text/css" />
+    <!--link href="{f:uri.resource(path:'Frontend/font-awesome/css/font-awesome.css')}" rel="stylesheet" type="text/css" /-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="{f:uri.resource(path:'Frontend/css/style.css')}" rel="stylesheet" type="text/css" />
+    <link href="{f:uri.resource(path:'Frontend/css/responsive.css')}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{f:uri.resource(path:'Frontend/layerslider/css/layerslider.css')}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Frontend/css/bright-red.css')}" title="sea-green" />
+
+
+
+
+
+    <link href="{f:uri.resource(path:'Frontend/css/contact.css')}" rel="stylesheet" type="text/css" /> <!-- AJAX Contact Form Stylesheet -->
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <script type="text/javascript" language="javascript" src="js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- Scripts -->
+    <script src="{f:uri.resource(path:'Frontend/js/jquery.1.9.1.js')}" type="text/javascript"></script>
+    <script src="{f:uri.resource(path:'Frontend/js/bootstrap.js')}"></script>
+    <script src="{f:uri.resource(path:'Frontend/js/html5lightbox.js')}"></script>
+    <script src="{f:uri.resource(path:'Frontend/js/jquery.carouFredSel-6.2.1-packed.js')}" type="text/javascript"></script>
+    <!--script type="text/javascript" src="{f:uri.resource(path:'Frontend/js/jquery.jigowatt.js')}"></script--><!-- AJAX Form Submit -->
+
+    
+    <script defer src="{f:uri.resource(path:'Frontend/js/jquery.flexslider.js')}"></script>
+    <script defer src="{f:uri.resource(path:'Frontend/js/jquery.mousewheel.js')}"></script>
+     <script defer src="{f:uri.resource(path:'Frontend/js/jquery.countdown.js')}"></script>
+
+
+    <!-- Scripts For Layer Slider  -->
+    <script src="{f:uri.resource(path:'Frontend/layerslider/JQuery/jquery-easing-1.3.js')}" type="text/javascript"></script>
+    <script src="{f:uri.resource(path:'Frontend/layerslider/JQuery/jquery-easing-1.3.js')}" type="text/javascript"></script>
+    <script src="{f:uri.resource(path:'Frontend/layerslider/js/layerslider.transitions.js')}" type="text/javascript"></script>
+    <script src="{f:uri.resource(path:'Frontend/layerslider/js/layerslider.kreaturamedia.jquery.js')}" type="text/javascript"></script>
+    <script src="{f:uri.resource(path:'Frontend/js/jquery.plugin.min.js')}"></script>
+    <script src="{f:uri.resource(path:'Frontend/js/script.js')}"></script>
+    <script>
+$(function () {
+    var austDay = new Date();
+    austDay = new Date(2016 , 3 , 1);
+    $('.count-down').countdown({until: austDay});
+    });
+    
+$(function () {
+    var austDay2 = new Date();
+    austDay2 = new Date(2015 , 2 , 22);
+    $('.count-down2').countdown({until: austDay2});
+    });
+    
+</script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('.footer_carousel').flexslider({
+            animation: "slide",
+            animationLoop: false,
+            slideShow:false,
+            controlNav: true,
+            maxItems: 1,
+            pausePlay: false,
+            mousewheel:true,
+            start: function(slider){
+                $('body').removeClass('loading');
+            }
+        });
+    })
+</script>
+</head>
+<body>
+<div class="theme-layout">
+    <header class="sticky">
+        <div class="container">
+            <div class="logo">
+                <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/')}" alt="Logo" /><h1><i></i></h1></a>
+            </div><!-- Logo -->
+            <nav class="menu">
+                <ul id="menu-navigation">
+                    <f:if condition="{f:action()} == 'home'">
+                        <f:then>
+                            <li class="active"><f:link.action action="home" controller="Frontend\Get">Home</f:link.action></li>
+                        </f:then>
+                        <f:else>
+                            <li><f:link.action action="home" controller="Frontend\Get">Home</f:link.action></li>
+                        </f:else>
+                    </f:if>
+                    <li><f:link.action action="search" controller="Frontend\Get">Search</f:link.action></li>
+                    <li><a>Opportunity</a>
+                        <ul>
+                            <li><f:link.action action="events" controller="Frontend\Get">Upcoming Events</f:link.action></li>
+                            <li><f:link.action action="volunteering" controller="Frontend\Get">Volunteering</f:link.action></li>
+                            <li><f:link.action action="internships" controller="Frontend\Get">Internships</f:link.action></li>
+                            <li><f:link.action action="jobs" controller="Frontend\Get">Job Openings</f:link.action></li>
+                        </ul>
+                    </li>
+                    <li><a>About</a>
+                        <ul>
+                            <li><a href="portfolio-2-column.html" title="">Our Team</a></li>
+                            <li><a href="portfolio-3-column.html" title="">Partners</a></li>
+                            <li><a href="portfolio-4-column.html" title="">Collaborations</a></li>
+                            <li><a href="portfolio-4-column.html" title="">Credits</a></li>
+                        </ul>
+                    </li>
+                    <li><a>Projects</a></li>
+                    <f:security.ifHasRole role="User">
+                        <f:then>
+                            <li><a>Hi!</a>
+                                <ul>
+                                    <li><f:link.action action="profile" controller="Frontend\Get">Profile</f:link.action></li>
+                                    <f:security.ifHasRole role="Incharge">
+                                        <f:then>
+                                            <li><f:link.action action="home" controller="Backend\Get">Backend</f:link.action></li>
+                                        </f:then>
+                                    </f:security.ifHasRole>
+                                    <li><f:link.action action="logout" controller="auth">Logout</f:link.action></li>
+                                </ul>
+                            </li>
+                        </f:then>
+                        <f:else>
+                            <li><a href="#" data-toggle="modal" data-target="#basicModal">Login</a></li>
+                        </f:else>
+                    </f:security.ifHasRole>
+                </ul>
+            </nav><!-- Menu -->
+
+            <!--select class="ipadMenu">
+                <option value="">Menu</option>
+                <option value="index.html">Home</option>
+                <option value="index2.html">Search</option>
+                <option value="index3.html">Coming Events</option>
+                <option value="index4.html">Volunteering</option>
+                <option value="index7.html">Internships</option>
+                <option value="index5.html">Job Openings</option>
+                <option value="index6.html">Our Team</option>
+                <option value="sticky-menu.html">Partners</option>
+                <option value="menu-below-slider.html">Collaborations</option>
+                <option value="middle-logo.html">Credits</option>
+                <option value="index5.html">Projects</option>
+                <option value="about.html">Login</option>
+            </select-->
+        </div>
+    </header><!--header-->
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-md-8">
+                    <div class="contact-info form" style="padding-bottom:20px">
+
+                        <div class="accordion_toggle "><a href="#"><span><i class="icon-user"></i></span>User Login</a></div>
+                        <div class="accordion_content " style="display: block;" style="padding-bottom:20px">
+                            <f:form action="authenticate" controller="auth" package="project.helpiez" method="post">
+                                <label accesskey="U">Username <span>*</span></label>
+                                <f:form.textfield class="form-control input-field" placeholder="Username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]"></f:form.textfield>
+                                <label accesskey="U">Password <span>*</span></label>
+                                <f:form.password class="form-control input-field" placeholder="Password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]"></f:form.password>
+                                <f:form.submit value="Submit" class="form-button submit"/>
+                            </f:form>
+                        </div>
+                    </div>
+                    <div class="contact-info form">
+
+                        <div class="accordion_toggle">
+                            <a href="#"><span><i class="icon-group"></i></span>User Registration</a>
+                        </div>
+                        <div class="accordion_content " style="display: block;">
+                            <f:form action="registerEmail" objectName="userAccount" controller="auth" package="Project.Helpiez" method="post">
+                            <label accesskey="U">Full name <span>*</span></label>
+                            <f:form.textfield property="name" placeholder="Name" name="name" class="form-control input-field"/>
+                            <label accesskey="U">Username <span>*</span></label>
+                            <f:form.textfield property="username" placeholder="username" name="username" class="form-control input-field"/>
+                            <label accesskey="U">Email <span>*</span></label>
+                            <f:form.textfield property="email" placeholder="Email" name="email" class="form-control input-field"/>
+                            <label accesskey="U">Password <span>*</span></label>
+                            <f:form.password property="password" placeholder="Password" class="form-control input-field" />
+                            <f:form.submit value="Submit" class="form-button submit"/>
+                            </f:form>
+                        </div>
+                    </div>
+                    
+            </div>
+            <div class="col-md-4">
+            <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+            <button class="btn btn-default">Twitter Login</button>
+            </div>
+        </div>
+            </div>
+            <div class="modal-footer">
+                <f:link.action action="home" class="btn btn-default" controller="Backend\Get">Organisation Login/Registration</f:link.action>
+            </div>
+    </div>
+  </div>
+</div>
+    <f:render section="Content" />
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-widget-title">
+                    <h4><strong><span>P</span>eople</strong> Reviews</h4>
+                </div>
+                <div class="footer_carousel">
+                    <ul class="slides">
+                        <li>
+                            <div class="review">
+                                <i>L</i><p><span>ifeline</span> is clean and modern responsive Template built with HTML5 & CSS3 coding and easy to use Shortcodes with load of features in it. We have implemented many features in this theme which makes your project easier and better than before and can be used for multipurpose. </p>
+                            </div>
+                            <div class="from">
+                                <h6>Thoms gomz britian</h6>
+                                <span>CE0, Australia</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="review">
+                                <i>L</i><p><span>ifeline</span> is clean and modern responsive Template built with HTML5 & CSS3 coding and easy to use Shortcodes with load of features in it. We have implemented many features in this theme which makes your project easier and better than before and can be used for multipurpose. </p>
+                            </div>
+                            <div class="from">
+                                <h6>Thoms gomz britian</h6>
+                                <span>CE0, Australia</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- Reviews Widget -->
+            <div class="col-md-3">
+                <div class="footer-widget-title">
+                    <h4><strong><span>T</span>rending</strong></h4>
+                </div>
+                <div class="flickr-images">
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr1.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr2.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr3.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr4.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr5.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr6.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr7.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr8.jpg')}" alt="" /></a>
+                    <a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/flickr9.jpg')}" alt="" /></a>
+                </div>
+            </div><!-- Flickr Widget -->
+            <div class="col-md-3">
+                <div class="footer-widget-title">
+                    <h4><strong><span>C</span>ontact</strong> Us</h4>
+                </div>
+                <ul class="contact-details">
+                    <li>
+                        <span><i class="icon-home"></i>ADDRESS</span>
+                        <p>#8901 Marmora Road Chi Minh City, Vietnam</p>
+                    </li>
+                    <li>
+                        <span><i class="icon-phone-sign"></i>PHONE NO</span>
+                        <p>+00 035 835 282 / +00 034 965 353</p>
+                    </li>
+                    <li>
+                        <span><i class="icon-envelope-alt"></i>EMAIL ID</span>
+                        <p>#8901 Marmora Road Chi Minh City, Vietnam</p>
+                    </li>
+                    <li>
+                        <span><i class="icon-link"></i>WEB ADDRESS</span>
+                        <p>http://www.yourwebsite.com</p>
+                    </li>
+                </ul>
+            </div><!-- Contact Us Widget -->
+            <div class="col-md-3">
+                <div class="newsletter">
+                    <h4><strong>SIGNUP</strong> NEWSLETTER</h4>
+                    <p>Quisque volutpat mattis eros. Nullamma lesuada erat ut turpis. Suspendisse.</p>
+                    <input class="form-control" type="email" placeholder="Email" />
+                </div>
+                <ul class="social-bar">
+                    <li><a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/rss.jpg')}" alt="" /></a></li>
+                    <li><a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/facebook.jpg')}" alt="" /></a></li>
+                    <li><a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/gplus.jpg')}" alt="" /></a></li>
+                    <li><a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/linked-in.jpg')}" alt="" /></a></li>
+                    <li><a href="#" title=""><img src="{f:uri.resource(path:'Frontend/images/pinterest.jpg')}" alt="" /></a></li>
+                </ul>
+                <div class="newsletter-btn">
+                    <input type="button" value="Submit" />
+                </div>
+            </div>	<!-- News Letter SignUp -->
+        </div>
+    </div>
+</footer><!-- Footer -->
+</body>
+</html>")
+20 TYPO3\Fluid\View\AbstractTemplateView::render()
+19 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+18 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+17 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+16 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+15 call_user_func_array(array|2|, array|2|)
+14 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+13 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+12 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+11 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+10 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+9 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+8 call_user_func_array(array|2|, array|2|)
+7 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call("dispatch", array|2|)
+6 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+5 TYPO3\Flow\Mvc\DispatchComponent_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+4 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+3 TYPO3\Flow\Http\Component\ComponentChain_Original::handle(TYPO3\Flow\Http\Component\ComponentContext)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+HTTP REQUEST:
+GET / HTTP/1.1
+Host: project.helpiez
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cache-Control: max-age=0
+
+
+
+HTTP RESPONSE:
+[response was empty]

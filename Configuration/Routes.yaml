@@ -1,0 +1,18 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the Flow manual for possible configuration options.    #
+#                                                                        #
+
+##
+# TYPO3 Neos subroutes
+
+-
+  name: 'Helpiez'
+  uriPattern: '<HelpiezSubroutes>'
+  subRoutes:
+    'HelpiezSubroutes':
+      package: 'Project.Helpiez'
